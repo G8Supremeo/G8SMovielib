@@ -18,8 +18,12 @@
 
 class MovieRecommender {
     constructor() {
-        // Python backend URL
-        this.apiUrl = 'http://localhost:5000/api';
+        // Python backend URL (Dynamic switching)
+        const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+        this.apiUrl = isLocalhost
+            ? 'http://localhost:5000/api'
+            : 'https://INSERT-YOUR-RENDER-URL-HERE.onrender.com/api'; // TODO: User must update this after deploying backend
+
         this.serverAvailable = null; // null = unchecked, true/false = cached
 
         // JS fallback state

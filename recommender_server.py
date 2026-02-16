@@ -348,4 +348,12 @@ if __name__ == '__main__':
     print('  POST /api/recommend  — Get smart recommendations')
     print('  GET  /api/health     — Health check')
     print('=' * 60)
-    app.run(debug=True, port=5000)
+    print('  GET  /api/health     — Health check')
+    print('=' * 60)
+    
+    # Use PORT environment variable if available (Render/Heroku), else 5000
+    import os
+    port = int(os.environ.get('PORT', 5000))
+    
+    # Listen on 0.0.0.0 to allow external access (required for Docker/Render)
+    app.run(host='0.0.0.0', port=port)
