@@ -22,7 +22,7 @@ class MovieRecommender {
         const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
         this.apiUrl = isLocalhost
             ? 'http://localhost:5000/api'
-            : 'https://INSERT-YOUR-RENDER-URL-HERE.onrender.com/api'; // TODO: User must update this after deploying backend
+            : 'https://movie-library-api-ecms.onrender.com/api'; // MUST include /api at the end!
 
         this.serverAvailable = null; // null = unchecked, true/false = cached
 
@@ -39,7 +39,7 @@ class MovieRecommender {
         try {
             const response = await fetch(`${this.apiUrl}/health`, {
                 method: 'GET',
-                signal: AbortSignal.timeout(2000) // 2-second timeout
+                signal: AbortSignal.timeout(5000) // Increased to 5s for Render "Cold Start"
             });
             const data = await response.json();
             this.serverAvailable = data.status === 'ok';
