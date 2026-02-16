@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://your-domain.com/sitemap.xml
+Sitemap: https://g8smovielib.vercel.app/sitemap.xml
 
